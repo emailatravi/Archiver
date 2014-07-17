@@ -8,10 +8,30 @@
 
 #import "AppDelegate.h"
 
+#import "Person.h"
+#import "Languages.h"
+
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    NSArray *readFileArray = [AppDelegate readFile:@"person_list"];
+    if (!readFileArray) {
+        [AppDelegate createFile:[self getPersonArray] aFileName:@"person_list"];
+        // Read the file from persistance.
+        readFileArray = [AppDelegate readFile:@"person_list"];
+    }
+    
+    for (Person *person in readFileArray) {
+        NSMutableString *mtString = [NSMutableString new];
+        [mtString appendFormat:@"%@ %@ of age %@ knows ", person.firstName, person.lastName, person.age];
+        for (Languages *lang in person.languages) {
+            [mtString appendFormat:@"%@, ", lang.languageName];
+        }
+        
+        NSLog(@"%@", mtString);
+    }
+    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
@@ -44,6 +64,81 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+#pragma mark - Private Methods
+
+- (NSArray*)getPersonArray {
+    NSMutableArray *personArray = [NSMutableArray new];
+    {
+        Person *person = [Person new];
+        [person setFirstName:@"X"];
+        [person setLastName:@"Y"];
+        [person setAge:@"24"];
+        
+        Languages *lang_1 = [Languages new];
+        [lang_1 setLanguageName:@"Objective C"];
+        
+        Languages *lang_2 = [Languages new];
+        [lang_2 setLanguageName:@"C"];
+        
+        [person setLanguages:@[lang_1, lang_2]];
+        
+        [personArray addObject:person];
+    }
+    
+    {
+        Person *person = [Person new];
+        [person setFirstName:@"A"];
+        [person setLastName:@"B"];
+        [person setAge:@"29"];
+        
+        Languages *lang_1 = [Languages new];
+        [lang_1 setLanguageName:@"Java"];
+        
+        [person setLanguages:@[lang_1]];
+        
+        [personArray addObject:person];
+    }
+    return personArray;
+}
+
++ (NSString*)getFilePath:(NSString *)aFileName {
+    if (aFileName) {
+        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+        NSString *documentsDirectory = [paths objectAtIndex:0];
+        return [documentsDirectory stringByAppendingString:[NSString stringWithFormat:@"/%@.archive", aFileName]];
+    }
+    return nil;
+}
+
++ (id)readFile:(NSString *)aFileName {
+    @try {
+        NSString *filePath = [AppDelegate getFilePath:aFileName];
+        return [NSKeyedUnarchiver unarchiveObjectWithFile:filePath];
+    }
+    @catch (NSException *exception) {
+        [AppDelegate deleteFile:aFileName];
+    }
+}
+
++ (BOOL)createFile:(id)object aFileName:(NSString *)aFileName {
+    @try {
+        NSString  *filePath = [AppDelegate getFilePath:aFileName];
+        if([NSKeyedArchiver archiveRootObject:object toFile:filePath])
+            return YES;
+        else
+            return NO;
+    }
+    @catch (NSException *exception) {
+        [AppDelegate deleteFile:aFileName];
+    }
+}
+
++ (BOOL)deleteFile:(NSString *)aFileName {
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    NSString *filePath = [AppDelegate getFilePath:aFileName];
+    return [fileManager removeItemAtPath:filePath error:NULL];
 }
 
 @end
