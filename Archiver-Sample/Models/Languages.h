@@ -7,8 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "BaseModel.h"
 
-@interface Languages : NSObject <NSCoding>
+@interface Languages : BaseModel
 
 @property (nonatomic, strong) NSString *languageName;
 

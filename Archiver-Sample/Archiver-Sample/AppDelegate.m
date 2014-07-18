@@ -7,19 +7,19 @@
 //
 
 #import "AppDelegate.h"
-
 #import "Person.h"
 #import "Languages.h"
+#import "Archiver.h"
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    NSArray *readFileArray = [AppDelegate readFile:@"person_list"];
+    NSArray *readFileArray = [Archiver readFile:@"person_list"];
     if (!readFileArray) {
-        [AppDelegate createFile:[self getPersonArray] aFileName:@"person_list"];
+        [Archiver createFile:[self getPersonArray] aFileName:@"person_list"];
         // Read the file from persistance.
-        readFileArray = [AppDelegate readFile:@"person_list"];
+        readFileArray = [Archiver readFile:@"person_list"];
     }
     
     for (Person *person in readFileArray) {
@@ -101,44 +101,6 @@
         [personArray addObject:person];
     }
     return personArray;
-}
-
-+ (NSString*)getFilePath:(NSString *)aFileName {
-    if (aFileName) {
-        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-        NSString *documentsDirectory = [paths objectAtIndex:0];
-        return [documentsDirectory stringByAppendingString:[NSString stringWithFormat:@"/%@.archive", aFileName]];
-    }
-    return nil;
-}
-
-+ (id)readFile:(NSString *)aFileName {
-    @try {
-        NSString *filePath = [AppDelegate getFilePath:aFileName];
-        return [NSKeyedUnarchiver unarchiveObjectWithFile:filePath];
-    }
-    @catch (NSException *exception) {
-        [AppDelegate deleteFile:aFileName];
-    }
-}
-
-+ (BOOL)createFile:(id)object aFileName:(NSString *)aFileName {
-    @try {
-        NSString  *filePath = [AppDelegate getFilePath:aFileName];
-        if([NSKeyedArchiver archiveRootObject:object toFile:filePath])
-            return YES;
-        else
-            return NO;
-    }
-    @catch (NSException *exception) {
-        [AppDelegate deleteFile:aFileName];
-    }
-}
-
-+ (BOOL)deleteFile:(NSString *)aFileName {
-    NSFileManager *fileManager = [NSFileManager defaultManager];
-    NSString *filePath = [AppDelegate getFilePath:aFileName];
-    return [fileManager removeItemAtPath:filePath error:NULL];
 }
 
 @end

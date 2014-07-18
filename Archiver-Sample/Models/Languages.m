@@ -7,19 +7,7 @@
 //
 
 #import "Languages.h"
-#import "NSObject+NSCoding.h"
 
 @implementation Languages
-
-- (void)encodeWithCoder:(NSCoder *)coder {
-    [self autoEncodeWithCoder:coder];
-}
-
-- (id)initWithCoder:(NSCoder *)coder {
-    if (self = [super init]) {
-        [self autoDecode:coder];
-    }
-    return self;
-}
 
 @end
