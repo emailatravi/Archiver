@@ -1,5 +1,4 @@
-NSObject+NSCoding.h
-===================
+### NSObject+NSCoding.h
 
 Objective C - Object Persistance .
 
@@ -51,14 +50,12 @@ Usage of BaseModel.h
 
 @end
 ```
-Archiver
-========
+### Archiver
 
 This is the helper functions that have file operation to save, create, read etc.
 
 
-Motivation
-==========
+#### Motivation
 
 Encoding and Decoding as suggested by apple is quite lengthy if there are too many variables. Just to overcome this problem "Mike Mayo" suggested auto encoding and auto decoding. This code works fine in case of 32 Bit architecture. For 64 but architecture, the code breaks (needs some tweaking). 
 

@@ -17,7 +17,7 @@ Pod::Spec.new do |s|
 
   s.name         = "NSObject+NSCoding"
   s.version      = "1.0.0"
-  s.summary      = "A short description of NSObject+NSCoding."
+  s.summary      = "Simple classes to make object persistence with NSCoding easier. Category based on NSObject+NSCoding"
 
   s.description  = <<-DESC
                    A longer description of NSObject+NSCoding in Markdown format.
