@@ -21,20 +21,24 @@ To the Class objects that needs persistance, follow the below mentioned:
 
 @implementation SomeModelClass 
 
-- (void)encodeWithCoder:(NSCoder *)coder {
+-(void)encodeWithCoder:(NSCoder *)coder {
+
     [self autoEncodeWithCoder:coder];
+    
 }
 
-- (id)initWithCoder:(NSCoder *)coder {
+-(id)initWithCoder:(NSCoder *)coder {
+
     if (self = [super init]) {
         [self autoDecode:coder];
     }
     return self;
+    
 }
 
 @end
 
-And this is for the Lazy ones (Like me :) ). Just inherit your model class by BaseModel.h and you are done.
+And this is for the Lazy ones. Just inherit your model class by BaseModel.h and you are done.
 
 Usage of BaseModel.h
 
@@ -56,5 +60,3 @@ Code inspiration came from https://github.com/greenisus/NSObject-NSCoding
 Some related information:
 http://nshipster.com/nscoding/
 https://developer.apple.com/library/ios/documentation/Cocoa/Conceptual/Archiving/Archiving.html
-
-
