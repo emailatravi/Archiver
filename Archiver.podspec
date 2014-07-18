@@ -9,5 +9,11 @@ Pod::Spec.new do |s|
   s.source_files  			= "Archiver", "Vendor/**/*.{h,m}"
 
   s.public_header_files 	= "Vendor/**/*.h"
+  
+  s.subspec 'no-arc' do |ss|
+	ss.source_files 		= "Archiver", "Vendor/**/NSObject+NSCoding.m"
+    ss.requires_arc 		= false
+    ss.compiler_flags 		= '-fno-objc-arc'
+  end
 
 end
