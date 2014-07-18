@@ -7,7 +7,7 @@ Pod::Spec.new do |s|
   s.license      			= "GNU General Public License"
   s.author       			= { "Ravi Prakash Sahu" => "emailatravi@gmail.com" }
   s.ios.deployment_target 	= "4.0"
-  s.source       			= { :git => "https://github.com/emailatravi/Archiver.git"}
+  s.source       			= { :git => "https://github.com/emailatravi/Archiver.git", :tag => "1.0.0" }
   s.source_files  			= "Vendor/**/*.{h,m}"
   s.requires_arc 			= false
   s.public_header_files 	= "Vendor/**/*.h"
