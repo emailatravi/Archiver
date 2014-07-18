@@ -40,6 +40,11 @@
         id value = [coder decodeObjectForKey:key];
         if (value) {
             object_setInstanceVariable(self, [key UTF8String], value);
+            // Check if @synthesise is not implemented.
+            if (![self valueForKey:key]) {
+                NSString *unSynthesizedKey = [[NSString alloc] initWithFormat:@"_%@", key];
+                object_setInstanceVariable(self, [unSynthesizedKey UTF8String], value);
+            }
         }
     }
 }
