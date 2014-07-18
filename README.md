@@ -10,6 +10,7 @@ Here the implementation is "Architecture Independent" to handle "Auto Encoding" 
 
 To the Class objects that needs persistance, follow the below mentioned:
 
+```
 @interface SomeModelClass : NSObject <NSCoding>
 
 // Some variables
@@ -34,11 +35,12 @@ To the Class objects that needs persistance, follow the below mentioned:
 }
 
 @end
-
+```
 And this is for the Lazy ones. Just inherit your model class by BaseModel.h and you are done.
 
 Usage of BaseModel.h
 
+```
 @interface SomeModelClass : BaseModel
 
 // Some variables
@@ -48,7 +50,7 @@ Usage of BaseModel.h
 @implementation SomeModelClass 
 
 @end
-
+```
 Archiver
 ========
 
