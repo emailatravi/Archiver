@@ -1,5 +1,5 @@
-Archiver
-========
+NSObject+NSCoding.h
+===================
 
 Objective C - Object Persistance .
 
@@ -7,9 +7,6 @@ These are some simple classes to make object persistence with NSCoding easier.
 
 Here the implementation is "Architecture Independent" to handle "Auto Encoding" and 
 "Auto Decoding".
-
-NSObject+NSCoding.h Usage
-=========================
 
 To the Class objects that needs persistance, follow the below mentioned:
 
@@ -52,11 +49,20 @@ Usage of BaseModel.h
 
 @end
 
+Archiver
+========
+
+This is the helper functions that have file operation to save, create, read etc.
+
+
+Motivation
+==========
 
 Encoding and Decoding as suggested by apple is quite lengthy if there are too many variables. Just to overcome this problem "Mike Mayo" suggested auto encoding and auto decoding. This code works fine in case of 32 Bit architecture. For 64 but architecture, the code breaks (needs some tweaking). 
 
 Code inspiration came from https://github.com/greenisus/NSObject-NSCoding
 
 Some related information:
+
 http://nshipster.com/nscoding/
 https://developer.apple.com/library/ios/documentation/Cocoa/Conceptual/Archiving/Archiving.html
