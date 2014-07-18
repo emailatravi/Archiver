@@ -44,6 +44,7 @@
             if (![self valueForKey:key]) {
                 NSString *unSynthesizedKey = [[NSString alloc] initWithFormat:@"_%@", key];
                 object_setInstanceVariable(self, [unSynthesizedKey UTF8String], value);
+                [unSynthesizedKey release];
             }
         }
     }
