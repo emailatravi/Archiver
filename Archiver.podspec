@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         			= 'Archiver'
-  s.version      			= '1.0.1'
+  s.version      			= '1.0.0'
   s.summary      			= 'Simple classes to make object persistence with NSCoding
    easier. Category based on NSObject+NSCoding'
   s.homepage 				= 'https://github.com/emailatravi/Archiver'
@@ -10,7 +10,7 @@ Pod::Spec.new do |s|
   s.ios.deployment_target 	= '4.0'
   s.source       			= {
       :git => 'https://github.com/emailatravi/Archiver.git',
-      :tag => '1.0.1'
+      :tag => '1.0.0'
   }
   s.source_files  			= 'Vendor/**/*.{h,m}'
   s.requires_arc 			= false
