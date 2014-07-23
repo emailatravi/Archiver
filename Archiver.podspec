@@ -10,7 +10,7 @@ Pod::Spec.new do |s|
   s.ios.deployment_target 	= '4.0'
   s.source       			= {
       :git => 'https://github.com/emailatravi/Archiver.git',
-      :tag => '1.0.0'
+      :tag => '1.0.1'
   }
   s.source_files  			= 'Vendor/**/*.{h,m}'
   s.requires_arc 			= false

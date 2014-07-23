@@ -28,25 +28,14 @@
 - (void)autoEncodeWithCoder:(NSCoder *)coder {
     NSDictionary *properties = [ClassProperty propertyDictionary:[self class]];
     for (NSString *key in properties) {
-        if ([self valueForKey:key]) {
-            [coder encodeObject:[self valueForKey:key] forKey:key];
-        }
+        [coder encodeObject:[self valueForKey:key] forKey:key];
     }
 }
 
 - (void)autoDecode:(NSCoder *)coder {
     NSDictionary *properties = [ClassProperty propertyDictionary:[self class]];
     for (NSString *key in properties) {
-        id value = [coder decodeObjectForKey:key];
-        if (value) {
-            object_setInstanceVariable(self, [key UTF8String], value);
-            // Check if @synthesise is not implemented.
-            if (![self valueForKey:key]) {
-                NSString *unSynthesizedKey = [[NSString alloc] initWithFormat:@"_%@", key];
-                object_setInstanceVariable(self, [unSynthesizedKey UTF8String], value);
-                [unSynthesizedKey release];
-            }
-        }
+        object_setInstanceVariable(self, [key UTF8String], [coder decodeObjectForKey:key]);
     }
 }
 

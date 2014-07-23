@@ -24,6 +24,8 @@
 
 @implementation Person
 
+@synthesize lastName;
+
 - (void)encodeWithCoder:(NSCoder *)coder {
     [self autoEncodeWithCoder:coder];
 }

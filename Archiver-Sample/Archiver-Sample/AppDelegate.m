@@ -113,6 +113,22 @@
         
         [personArray addObject:person];
     }
+    
+    {
+        Person *person = [Person new];
+        [person setFirstName:@"XY"];
+        [person setLastName:@"YZ"];
+        
+        Languages *lang_1 = [Languages new];
+        [lang_1 setLanguageName:@"Objective C, C, Java"];
+        
+        Languages *lang_2 = [Languages new];
+        [lang_2 setLanguageName:@"Scala"];
+        
+        [person setLanguages:@[lang_1, lang_2]];
+        
+        [personArray addObject:person];
+    }
     return personArray;
 }
 
