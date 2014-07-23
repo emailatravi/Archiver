@@ -85,7 +85,7 @@
 #pragma mark -
 #pragma mark Public Methods
 
-+ (NSDictionary*)propertyDictionary:(Class)aObjectClass {
++ (NSDictionary*)getPropertyDictionaryForClass:(Class)aObjectClass {
     // Check if the cache dictionary has the property dictionary for this class
     NSDictionary *_cachePropertyDictionary = [[ClassProperty sharedInstance] getClassPropertyDictionaryFromCache:aObjectClass];
     if (_cachePropertyDictionary) {
@@ -93,6 +93,11 @@
     }
     else {
         NSMutableDictionary *_propertyDictionary = [NSMutableDictionary dictionaryWithCapacity:1];
+        // Check if we have any super class or not
+        Class superClass = class_getSuperclass(aObjectClass);
+        if (superClass != [NSObject class]) {
+            [_propertyDictionary addEntriesFromDictionary:[ClassProperty getPropertyDictionaryForClass:superClass]];
+        }
         u_int count;
         Ivar* ivars = class_copyIvarList(aObjectClass, &count);
         for (NSInteger i = 0; i < count ; i++)
