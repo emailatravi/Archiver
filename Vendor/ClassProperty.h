@@ -23,6 +23,6 @@
 
 @interface ClassProperty : NSObject
 
-+ (NSDictionary*)propertyDictionary:(Class)aObjectClass;
++ (NSDictionary*)getPropertyDictionaryForClass:(Class)aObjectClass;
 
 @end

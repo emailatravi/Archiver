@@ -26,14 +26,14 @@
 @implementation NSObject (NSCoding)
 
 - (void)autoEncodeWithCoder:(NSCoder *)coder {
-    NSDictionary *properties = [ClassProperty propertyDictionary:[self class]];
+    NSDictionary *properties = [ClassProperty getPropertyDictionaryForClass:[self class]];
     for (NSString *key in properties) {
         [coder encodeObject:[self valueForKey:key] forKey:key];
     }
 }
 
 - (void)autoDecode:(NSCoder *)coder {
-    NSDictionary *properties = [ClassProperty propertyDictionary:[self class]];
+    NSDictionary *properties = [ClassProperty getPropertyDictionaryForClass:[self class]];
     for (NSString *key in properties) {
         object_setInstanceVariable(self, [key UTF8String], [coder decodeObjectForKey:key]);
     }
