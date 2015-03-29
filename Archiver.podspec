@@ -1,23 +1,25 @@
-Pod::Spec.new do |s|
-  s.name         			= 'Archiver'
-  s.version      			= '1.0.0'
-  s.summary      			= 'Simple classes to make object persistence with NSCoding
-   easier. Category based on NSObject+NSCoding'
-  s.homepage 				= 'https://github.com/emailatravi/Archiver'
-  s.author       			= {
-      'Ravi Prakash Sahu' => 'emailatravi@gmail.com'
-  }
-  s.ios.deployment_target 	= '4.0'
-  s.source       			= {
-      :git => 'https://github.com/emailatravi/Archiver.git',
-      :tag => '1.0.0'
-  }
-  s.source_files  			= 'Vendor/**/*.{h,m}'
-  s.requires_arc 			= false
-  s.public_header_files 	= 'Vendor/**/*.h'
-  s.license      			= {
-      :type => 'GNU General Public License',
-      :file => 'LICENSE'
-  }
+#
+# Be sure to run `pod lib lint Archiver.podspec' to ensure this is a
+# valid spec and remove all comments before submitting the spec.
+#
+# Any lines starting with a # are optional, but encouraged
+#
+# To learn more about a Podspec see http://guides.cocoapods.org/syntax/podspec.html
+#
 
+Pod::Spec.new do |s|
+  s.name             = "Archiver"
+  s.version          = "1.0.1"
+  s.summary          = "This class will read and write objects that conform to the NSCoding protocol to disk."
+  s.homepage         = "https://github.com/emailatravi/Archiver"
+  s.license          = 'MIT'
+  s.author           = { "Ravi Prakash Sahu" => "emailatravi@gmail.com" }
+  s.source           = { :git => "https://github.com/emailatravi/Archiver.git", :tag => s.version.to_s }
+  s.social_media_url = 'https://twitter.com/emailatravi'
+
+  s.platform     = :ios, '5.0'
+  s.requires_arc = true
+
+  s.source_files = 'Pod/Classes/**/*'
+  s.frameworks = 'Foundation'
 end

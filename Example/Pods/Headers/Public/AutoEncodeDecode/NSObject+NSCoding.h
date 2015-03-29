@@ -1,0 +1,1 @@
+../../../AutoEncodeDecode/Pod/Classes/NSObject+NSCoding.h

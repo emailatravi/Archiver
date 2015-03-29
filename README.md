@@ -1,67 +1,46 @@
-### NSObject+NSCoding.h
+# Archiver
+	
+[![Version](https://img.shields.io/cocoapods/v/Archiver.svg?style=flat)](http://cocoapods.org/pods/Archiver)
+[![License](https://img.shields.io/cocoapods/l/Archiver.svg?style=flat)](http://cocoapods.org/pods/Archiver)
+[![Platform](https://img.shields.io/cocoapods/p/Archiver.svg?style=flat)](http://cocoapods.org/pods/Archiver)
 
-Objective C - Object Persistance .
+### Summary
 
-These are some simple classes to make object persistence with NSCoding easier. 
+This class will read and write objects that conform to the NSCoding protocol to disk.
 
-Here the implementation is "Architecture Independent" to handle "Auto Encoding" and 
-"Auto Decoding".
+[AutoEncodeDecode](https://github.com/emailatravi/AutoEncodeDecode) provides persistance to any NSObject class with least effort.
 
-To the Class objects that needs persistance, follow the below mentioned:
+### Sample Code
 
 ```
-@interface SomeModelClass : NSObject <NSCoding>
-
-// Some variables
-
-@end
-
-@implementation SomeModelClass 
-
--(void)encodeWithCoder:(NSCoder *)coder {
-
-    [self autoEncodeWithCoder:coder];
+NSArray *nameWriteArray = @[@"Ravi", @"Manish"];
+[Archiver createFile:nameWriteArray aFileName:@"Name_File"];
     
-}
-
--(id)initWithCoder:(NSCoder *)coder {
-
-    if (self = [super init]) {
-        [self autoDecode:coder];
-    }
-    return self;
-    
-}
-
-@end
+NSArray *nameReadArray = [Archiver readFile:@"Name_File"];
+NSLog(@"%@", [nameReadArray componentsJoinedByString:@" : "]);
 ```
-And this is for the Lazy ones. Just inherit your model class by BaseModel.h and you are done.
+There is more in Example project.
 
-Usage of BaseModel.h
+### Usage
+
+To run the example project, clone the repo, and run `pod install` from the Example directory first.
+
+### Installation
+
+Archiver is available through [CocoaPods](http://cocoapods.org). To install
+it, simply add the following line to your Podfile:
 
 ```
-@interface SomeModelClass : BaseModel
-
-// Some variables
-
-@end
-
-@implementation SomeModelClass 
-
-@end
+pod "Archiver"
 ```
-### Archiver
 
-This is the helper functions that have file operation to save, create, read etc.
+### Author
 
+Ravi Prakash Sahu, emailatravi@gmail.com
 
-#### Motivation
+### License
 
-Encoding and Decoding as suggested by apple is quite lengthy if there are too many variables. Just to overcome this problem "Mike Mayo" suggested auto encoding and auto decoding. This code works fine in case of 32 Bit architecture. For 64 but architecture, the code breaks (needs some tweaking). 
+Archiver is available under the MIT license. See the LICENSE file for more info.
 
-Code inspiration came from https://github.com/greenisus/NSObject-NSCoding
-
-Some related information:
-
-http://nshipster.com/nscoding/
-https://developer.apple.com/library/ios/documentation/Cocoa/Conceptual/Archiving/Archiving.html
+### Inspiration
+[NSObject-NSCoding](https://github.com/greenisus/NSObject-NSCoding)

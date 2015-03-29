@@ -1,0 +1,12 @@
+source 'https://github.com/CocoaPods/Specs.git'
+
+target 'Archiver', :exclusive => true do
+  pod "Archiver", :path => "../"
+  pod "AutoEncodeDecode", "~> 1.0.0"
+end
+
+target 'Tests', :exclusive => true do
+  pod "Archiver", :path => "../"
+
+  
+end
