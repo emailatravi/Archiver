@@ -10,7 +10,7 @@
 #define COCOAPODS_POD_AVAILABLE_Archiver
 #define COCOAPODS_VERSION_MAJOR_Archiver 1
 #define COCOAPODS_VERSION_MINOR_Archiver 0
-#define COCOAPODS_VERSION_PATCH_Archiver 1
+#define COCOAPODS_VERSION_PATCH_Archiver 2
 
 // AutoEncodeDecode
 #define COCOAPODS_POD_AVAILABLE_AutoEncodeDecode
