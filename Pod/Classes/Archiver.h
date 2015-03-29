@@ -35,6 +35,7 @@
 + (BOOL)fileExists:(NSString *)aFileName;
 + (BOOL)createFileAtGivenPath:(id)object aFilePath:(NSString *)aFilePath;
 + (BOOL)createFile:(id)object aFileName:(NSString *)aFileName;
++ (NSDate*)modifiedOn:(NSString *)aFileName;
 + (BOOL)deleteFile:(NSString *)aFileName;
 + (BOOL)deleteEverything;
 + (NSString*)getFilePath:(NSString *)aFileName;

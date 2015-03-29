@@ -101,6 +101,20 @@
         [Archiver deleteFile:aFileName];
     }
 }
+
++ (NSDate*)modifiedOn:(NSString *)aFileName {
+    NSString *filePath = [Archiver getFilePath:aFileName];
+    
+    NSFileManager *_fileManager = [NSFileManager defaultManager];
+    NSError *_error = nil;
+    NSDictionary *_fileAttributes = [_fileManager attributesOfItemAtPath:filePath error:&_error];
+    if (_fileAttributes) {
+        return [_fileAttributes fileModificationDate];
+    }
+    return nil;
+}
+
+
 + (BOOL)createFileAtGivenPath:(id)object aFilePath:(NSString *)aFilePath{
     @try {
         if([NSKeyedArchiver archiveRootObject:object toFile:aFilePath])

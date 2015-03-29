@@ -9,7 +9,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "Archiver"
-  s.version          = "1.0.1"
+  s.version          = "1.0.2"
   s.summary          = "This class will read and write objects that conform to the NSCoding protocol to disk."
   s.homepage         = "https://github.com/emailatravi/Archiver"
   s.license          = 'MIT'
