@@ -16,18 +16,19 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    /*
     NSArray *nameWriteArray = @[@"Ravi", @"Manish"];
-    [Archiver createFile:nameWriteArray aFileName:@"Name_File"];
+    [Archiver createFile:nameWriteArray fileName:@"Name_File"];
     
     NSArray *nameReadArray = [Archiver readFile:@"Name_File"];
     NSLog(@"%@", [nameReadArray componentsJoinedByString:@" : "]);
+    */
     
-    NSArray *readFileArray = [Archiver readFile:@"person_list"];
-    if (!readFileArray) {
-        [Archiver createFile:[self getPersonArray] aFileName:@"person_list"];
-        // Read the file from persistance.
-        readFileArray = [Archiver readFile:@"person_list"];
+    if (![Archiver fileExists:@"person_list" folderPath:@"Test"]) {
+        [Archiver createFile:[self getPersonArray] fileName:@"person_list" folderPath:@"Test"];
     }
+    
+    NSArray *readFileArray = [Archiver readFile:@"person_list" folderPath:@"Test"];
     
     for (Person *person in readFileArray) {
         NSMutableString *mtString = [NSMutableString new];
