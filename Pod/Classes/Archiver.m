@@ -117,7 +117,7 @@
         if (folderPath) {
             directoryPath = [directoryPath stringByAppendingPathComponent:folderPath];
         }
-        return [directoryPath stringByAppendingString:[NSString stringWithFormat:@"/%@.archive", fileName]];
+        return [directoryPath stringByAppendingString:[NSString stringWithFormat:@"/%@", fileName]];
     }
     return nil;
 }
